@@ -1,8 +1,9 @@
 import { Search, MapPin } from "lucide-react";
-
+import heroImage from "@/public/assets/heroimg1.png";
+import Image from "next/image";
 export default function Hero() {
   return (
-    <section className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center px-6 py-16">
+    <section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pt-[-1rem] pb-24 md:grid-cols-2">
 
       <div>
         <p className="uppercase text-sm tracking-widest text-[#A89B8F]">
@@ -34,7 +35,17 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="h-[450px] bg-[#EADFD6] rounded-2xl" />
+      {/* Right Image */}
+      <div className="relative h-[750px] overflow-hidden rounded-[1em]">
+        <Image
+          src={heroImage}
+          alt="Braider Hero Image"
+          fill
+          priority
+          className="object-cover"
+        />
+      </div>
     </section>
   );
-}
+} 
+      
