@@ -9,7 +9,7 @@ export default function Hero() {
           Beauty. Trust. Connection.
         </p>
 
-        <h1 className="text-5xl font-serif mt-4 leading-tight">
+        <h1 className="text-5xl font-serif mt-4 leading-tight text-[#3B2A1E]">
           Find Your <br /> Perfect Braider
         </h1>
 

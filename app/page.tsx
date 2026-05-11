@@ -7,7 +7,7 @@ import Features from "@/components/Features";
 import Braids from "@/components/Braids";
 import HowItWorks from "@/components/HowItWorks";
 import { CTA } from "@/components/CTA";
-import Footer from "@/components/Footer";
+
 
 const containerVariants = {
 	hidden: { opacity: 0 },
@@ -33,7 +33,7 @@ const sectionVariants = {
 
 export default function Home() {
 	return (
-		<div className="bg-[#F8F1E9] min-h-screen">
+		<div className="w-full bg-white flex flex-col items-center px-4 sm:px-6 md:px-8 pt-6 md:pt-10 pb-16 md:pb-20">
 			
 			{/* Floating Main Page */}
 			<main className="relative z-10 overflow-hidden rounded-b-[60px] md:rounded-b-[90px] bg-[#F8F1E9] shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
@@ -98,10 +98,7 @@ export default function Home() {
 				</motion.div>
 			</main>
 
-			{/* Footer Behind Main Page */}
-			<div className="-mt-16 relative z-0">
-				<Footer />
-			</div>
+		
 		</div>
 	);
 }

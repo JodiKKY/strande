@@ -2,7 +2,7 @@ import { ShieldCheck, Calendar, CreditCard } from "lucide-react";
 
 export default function Features() {
   return (
-    <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-6 py-12">
+    <section className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-6 py-12 text-[#3B2A1E]">
 
       <Feature icon={<ShieldCheck />} title="Verified Braiders" />
       <Feature icon={<Calendar />} title="Easy Booking" />
