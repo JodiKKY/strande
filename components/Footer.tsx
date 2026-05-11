@@ -1,40 +1,95 @@
+import Link from "next/link";
+
 export default function Footer() {
-  return (
-    <footer className="bg-[#3B2A1E] text-[#F8F1E9] py-12 px-6">
-      <div className="max-w-6xl mx-auto">
+	return (
+		<footer className="relative -mt-16 z-0">
+			
+			{/* Footer Background */}
+			<div className="bg-[#3B2A1E] text-[#F8F1E9] rounded-t-[70px] md:rounded-t-[70px] pt-24 pb-10 px-6 md:px-10 overflow-hidden">
+				
+				{/* Background Glow */}
+				<div className="absolute inset-0 overflow-hidden pointer-events-none">
+					<div className="absolute top-0 left-1/2 -translate-x-1/2 h-[300px] w-[300px] rounded-full bg-[#EAD8C8]/5 blur-3xl" />
+				</div>
 
-        {/* Top */}
-        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
+				<div className="relative max-w-7xl mx-auto">
+					
+					{/* Top Section */}
+					<div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-10">
+						
+						{/* Brand */}
+						<div className="text-center md:text-left">
+							<h2 className="font-serif tracking-[0.35em] text-2xl md:text-3xl mb-3">
+								STRANDÉ
+							</h2>
 
-          <h2 className="font-serif tracking-[0.3em] text-xl mb-4 md:mb-0">
-            STRANDÉ
-          </h2>
+							<p className="text-[#D8C7BA] max-w-sm leading-relaxed text-sm md:text-base">
+								Modern braid artistry inspired by culture,
+								confidence, and timeless beauty.
+							</p>
+						</div>
 
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="hover:opacity-70">Home</a>
-            <a href="#" className="hover:opacity-70">Services</a>
-            <a href="#" className="hover:opacity-70">Gallery</a>
-            <a href="#" className="hover:opacity-70">Contact</a>
-          </div>
-        </div>
+						{/* Navigation */}
+						<div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-sm font-medium">
+							<Link
+								href="/"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								Home
+							</Link>
 
-        {/* Divider */}
-        <div className="border-t border-[#6f5a4a] my-6"></div>
+							<Link
+								href="/about"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								About
+							</Link>
 
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+							<Link
+								href="/contact"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								Contact
+							</Link>
 
-          <p className="mb-4 md:mb-0">
-            © {new Date().getFullYear()} STRANDÉ. All rights reserved.
-          </p>
+							<Link
+								href="/booking"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								Booking
+							</Link>
+						</div>
+					</div>
 
-          <div className="flex gap-4">
-            <a href="#" className="hover:opacity-70">Instagram</a>
-            <a href="#" className="hover:opacity-70">WhatsApp</a>
-          </div>
+					{/* Divider */}
+					<div className="border-t border-[#6E5848] my-6 opacity-70"></div>
 
-        </div>
-      </div>
-    </footer>
-  );
+					{/* Bottom Section */}
+					<div className="flex flex-col md:flex-row justify-between items-center gap-5 text-sm">
+						
+						<p className="text-[#D8C7BA] text-center md:text-left">
+							© {new Date().getFullYear()} STRANDÉ. All rights
+							reserved.
+						</p>
+
+						<div className="flex items-center gap-6">
+							<a
+								href="#"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								Instagram
+							</a>
+
+							<a
+								href="#"
+								className="hover:text-[#EAD8C8] transition duration-300"
+							>
+								WhatsApp
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	);
 }
