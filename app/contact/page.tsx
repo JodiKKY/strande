@@ -117,7 +117,7 @@ export default function ContactPage() {
 						</p>
 
 						<p className="mt-2 text-sm text-[#5C4A3E]">
-							We typically respond within 24-48 hours.
+							We typically respond within 24-48 when there are slots avaliable.
 						</p>
 					</div>
 				</section>

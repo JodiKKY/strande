@@ -31,3 +31,6 @@ section.mt-20.md\:mt-24 {
 section.mt-24.md\:mt-28 {
     margin-top: 0em;
 }
+img.object-cover.transition.duration-700.group-hover\:scale-105 {
+    height: 120%;
+}

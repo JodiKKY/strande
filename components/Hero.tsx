@@ -1,18 +1,18 @@
 import { Search, MapPin } from "lucide-react";
-import heroImage from "@/public/assets/hero2.png";
+import heroImage from "@/public/assets/hero 3.png";
 import Image from "next/image";
 
 export default function Hero() {
   return (
 
-<section className="mx-auto grid max-w-7xl items-center gap-14 px-6 pt-[-1rem] pb-24 md:grid-cols-2">
-      <div className="space-y-6">
+<section className="mx-auto grid max-w-7xl items-center gap-12 px-6 pt-[-1rem] pb-24 md:grid-cols-2">
+      <div className="space-y-4">
         <p className="uppercase text-sm tracking-widest text-[#A89B8F] animate-fade-in">
           Beauty. Trust. Connection.
         </p>
 
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif leading-tight text-[#3B2A1E] animate-fade-in-up">
-          Find Your <br /> Perfect Braider
+        <h1 className="text-3xl sm:text-5xl md:text-5xl lg:text-8xl font-serif leading-tight text-[#3B2A1E] animate-fade-in-up">
+          Find Your Perfect Braider
         </h1>
 
         <p className="text-[#5C4A3E] text-base sm:text-lg max-w-lg animate-fade-in-up-delay">
@@ -67,17 +67,30 @@ export default function Hero() {
         </div>
       </div>
 
-       {/* Right Image */}
-      <div className="relative h-197.5 overflow-hidden rounded-[1em]">
-        <Image
-          src={heroImage}
-          alt="Braider Hero Image"
-          fill
-          priority
-          className="object-cover "
-        />
+      {/* RIGHT IMAGE */}
+<div className="relative h-162.5 w-full md:w-[115%] lg:w-[130%]  overflow-hidden rounded-4xl left-[-1rem]">
+  <Image
+    src={heroImage}
+    alt="Three women with braided hairstyles"
+    fill
+    priority
+    className="object-cover"
+  />
 
-      </div>
+  {/* GRADIENT OVERLAY */}
+  <div className="absolute inset-0 bg-linear-to-t from-[#3B2A1E]/25 via-transparent to-transparent" />
+
+  {/* FLOATING CARD */}
+  <div className="absolute bottom-6 left-6 bg-[#F8F1E9]/90 backdrop-blur-md px-5 py-4 rounded-2xl shadow-lg border border-white/40">
+    <p className="text-[#3B2A1E] text-sm font-medium">
+      2,000+ Trusted Braiders
+    </p>
+
+    <p className="text-[#8A7768] text-xs mt-1">
+      Book your next style with confidence
+    </p>
+  </div>
+</div>
 
       <style jsx>{`
         @keyframes fade-in {
