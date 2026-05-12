@@ -24,3 +24,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+section.mt-20.md\:mt-24 {
+    margin-top: 5em;
+}
+section.mt-24.md\:mt-28 {
+    margin-top: 0em;
+}
