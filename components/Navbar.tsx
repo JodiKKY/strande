@@ -108,7 +108,7 @@ export default function Navbar() {
 											Contact
 										</Link>
 
-										<div className="pt-2">
+										{/* <div className="pt-2">
 											<Link
 												href="/booking"
 												onClick={() => setMenuOpen(false)}
@@ -116,7 +116,7 @@ export default function Navbar() {
 											>
 												Book Now
 											</Link>
-										</div>
+										</div> */}
 									</div>
 								</div>
 							</motion.div>
