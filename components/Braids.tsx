@@ -30,8 +30,7 @@ const braids = [
 
 export default function BraiderCard() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 ">
-      
+    <section className="mx-auto max-w-7xl px-6 py-24">
       {/* Heading */}
       <div className="mb-14 text-center">
         <p className="text-sm uppercase tracking-[0.35em] text-[#A89B8F]">
@@ -75,14 +74,17 @@ export default function BraiderCard() {
                 <h3 className="text-3xl text-white">
                   {braid.name}
                 </h3>
-
-                <button className="mt-5 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm text-white backdrop-blur-md transition duration-300 hover:bg-white hover:text-[#3B2A1E]">
-                  Explore Style
-                </button>
               </div>
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Single Button */}
+      <div className="mt-14 flex justify-center">
+        <button className="rounded-full bg-[#3B2A1E] px-8 py-4 text-sm uppercase tracking-[0.2em] text-white transition duration-300 hover:bg-[#5A3E2C]">
+          Explore All Styles
+        </button>
       </div>
     </section>
   );

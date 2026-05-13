@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { CalendarDays } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const braidStyles = [
 	"Box Braids",
@@ -72,13 +73,26 @@ export default function BookingPage() {
 
 		return Object.keys(e).length === 0;
 	}
+async function handleSubmit() {
+	if (!validate()) return;
 
-	async function handleSubmit() {
-		if (!validate()) return;
+	setIsSubmitting(true);
 
-		setIsSubmitting(true);
+	try {
+		await emailjs.send(
+			process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+			process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+			{
+				name,
+				email,
+				style,
+				date,
+				message,
+			},
+			process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+		);
 
-		await new Promise((resolve) => setTimeout(resolve, 1200));
+		setSubmitted(true);
 
 		console.log({
 			name,
@@ -88,16 +102,19 @@ export default function BookingPage() {
 			message,
 		});
 
-		setSubmitted(true);
-		setIsSubmitting(false);
-
 		setName("");
 		setEmail("");
 		setStyle("");
 		setDate("");
 		setMessage("");
 		setErrors({});
+	} catch (error) {
+		console.error("EmailJS Error:", error);
+		alert("Failed to send booking request. Try again.");
+	} finally {
+		setIsSubmitting(false);
 	}
+}
 
 	return (
 		<main className="min-h-screen bg-[#FAF7F4] flex items-center justify-center px-6 pt-28 pb-24">
@@ -278,8 +295,8 @@ export default function BookingPage() {
 							className="w-full bg-[#3B2A1E] hover:bg-[#2A1C12] transition text-white py-3 rounded-2xl font-medium disabled:opacity-50"
 						>
 							{isSubmitting
-								? "Checking Availability..."
-								: "Check Availability"}
+							? "Sending Booking Request..."
+							: "Check Availability"}
 						</button>
 					</div>
 				</section>
