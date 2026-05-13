@@ -25,6 +25,12 @@ export default function Navbar() {
 					<div className="hidden md:flex items-center gap-8">
 						<div className="flex items-center gap-8 text-sm font-medium text-[#4B3A2F]">
 							<Link
+								href="/"
+								className="hover:text-[#8B5E3C] transition-colors duration-200"
+							>
+									Home
+							</Link>
+							<Link
 								href="/about"
 								className="hover:text-[#8B5E3C] transition-colors duration-200"
 							>
@@ -39,12 +45,12 @@ export default function Navbar() {
 							</Link>
 						</div>
 
-						<Link
+						{/* <Link
 							href="/booking"
 							className="bg-[#3B2A1E] hover:bg-[#2A1C12] transition-all duration-300 text-white px-6 py-2.5 rounded-full text-sm font-medium shadow-sm"
 						>
 							Book Now
-						</Link>
+						</Link> */}
 					</div>
 
 					{/* Mobile Menu Button */}

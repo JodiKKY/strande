@@ -1,45 +1,51 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { CalendarDays } from "lucide-react";
 
-export default function ContactPage() {
+const braidStyles = [
+	"Box Braids",
+	"Knotless Braids",
+	"Cornrows",
+	"Faux Locs",
+	"Boho Braids",
+	"Stitch Braids",
+	"Fulani Braids",
+];
+
+export default function BookingPage() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
+	const [style, setStyle] = useState("");
+	const [date, setDate] = useState("");
 	const [message, setMessage] = useState("");
 
 	const [errors, setErrors] = useState<{
 		name?: string;
 		email?: string;
+		style?: string;
+		date?: string;
 		message?: string;
 	}>({});
 
 	const [submitted, setSubmitted] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	// Auto-dismiss success message after 5 seconds
 	useEffect(() => {
 		if (submitted) {
 			const timer = setTimeout(() => {
 				setSubmitted(false);
 			}, 5000);
+
 			return () => clearTimeout(timer);
 		}
 	}, [submitted]);
-
-	// Clear success message when user starts typing again
-	useEffect(() => {
-		if (submitted && (name || email || message)) {
-			setSubmitted(false);
-		}
-	}, [name, email, message, submitted]);
 
 	function validate() {
 		const e: typeof errors = {};
 
 		if (!name.trim()) {
 			e.name = "Please enter your name.";
-		} else if (name.trim().length < 2) {
-			e.name = "Name must be at least 2 characters.";
 		}
 
 		if (!email.trim()) {
@@ -47,13 +53,19 @@ export default function ContactPage() {
 		} else if (
 			!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 		) {
-			e.email = "Please enter a valid email address.";
+			e.email = "Please enter a valid email.";
+		}
+
+		if (!style) {
+			e.style = "Please select a braid style.";
+		}
+
+		if (!date) {
+			e.date = "Please select a preferred date.";
 		}
 
 		if (!message.trim()) {
-			e.message = "Please enter a message.";
-		} else if (message.trim().length < 10) {
-			e.message = "Message must be at least 10 characters.";
+			e.message = "Please enter additional details.";
 		}
 
 		setErrors(e);
@@ -66,12 +78,13 @@ export default function ContactPage() {
 
 		setIsSubmitting(true);
 
-		// Simulate API call
-		await new Promise((resolve) => setTimeout(resolve, 1000));
+		await new Promise((resolve) => setTimeout(resolve, 1200));
 
-		console.log("Contact form submission:", {
+		console.log({
 			name,
 			email,
+			style,
+			date,
 			message,
 		});
 
@@ -80,211 +93,193 @@ export default function ContactPage() {
 
 		setName("");
 		setEmail("");
+		setStyle("");
+		setDate("");
 		setMessage("");
 		setErrors({});
 	}
 
 	return (
 		<main className="min-h-screen bg-[#FAF7F4] flex items-center justify-center px-6 pt-28 pb-24">
-			<div className="w-full max-w-4xl bg-white rounded-3xl shadow-sm grid md:grid-cols-2 overflow-hidden">
+			<div className="w-full max-w-5xl bg-white rounded-[2rem] shadow-sm grid md:grid-cols-2 overflow-hidden">
 				
-				{/* Left Side */}
-				<section className="bg-[#F4ECE6] p-10 flex flex-col justify-center">
-					<h1 className="text-4xl font-serif text-[#2E2018]">
-						Contact Us
-					</h1>
-
-					<p className="mt-5 text-[#5C4A3E] leading-relaxed">
-						Have questions, collaborations, or custom
-						order requests?
-						<br />
-						We'd love to hear from you.
+				{/* LEFT SIDE */}
+				<section className="bg-[#F4ECE6] p-10 md:p-12 flex flex-col justify-center">
+					<p className="uppercase tracking-[0.25em] text-xs text-[#8A7768] mb-4">
+						Luxury Braid Booking
 					</p>
 
-					<div className="mt-8">
-						<p className="text-sm uppercase tracking-wide text-[#8A7768]">
-							Email
-						</p>
+					<h1 className="text-4xl md:text-5xl font-serif text-[#2E2018] leading-tight">
+						Reserve Your Next Style
+					</h1>
 
-						<p className="mt-2 text-lg text-[#2E2018]">
-							inquiries@strandé.com
-						</p>
-					</div>
+					<p className="mt-6 text-[#5C4A3E] leading-relaxed">
+						Choose your preferred braid style and request
+						an appointment based on available booking slots.
+					</p>
 
-					<div className="mt-6">
-						<p className="text-sm uppercase tracking-wide text-[#8A7768]">
-							Response Time
-						</p>
+					<div className="mt-10 space-y-6">
+						<div>
+							<p className="text-sm uppercase tracking-wide text-[#8A7768]">
+								Booking Hours
+							</p>
 
-						<p className="mt-2 text-sm text-[#5C4A3E]">
-							We typically respond within 24-48 when there are slots avaliable.
-						</p>
+							<p className="mt-2 text-[#2E2018]">
+								Mon – Sat · 9:00AM – 6:00PM
+							</p>
+						</div>
+
+						<div>
+							<p className="text-sm uppercase tracking-wide text-[#8A7768]">
+								Response Time
+							</p>
+
+							<p className="mt-2 text-sm text-[#5C4A3E]">
+								Availability confirmations are usually sent
+								within 24 - 48 hours when there are available slots.
+							</p>
+						</div>
+
 					</div>
 				</section>
 
-				{/* Right Side */}
-				<section className="p-10">
+				{/* RIGHT SIDE */}
+				<section className="p-10 md:p-12">
 					{submitted && (
-						<div 
-							className="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700 animate-fade-in"
-							role="alert"
-						>
-							✓ Your message has been sent successfully.
+						<div className="mb-6 rounded-2xl border border-green-200 bg-green-50 px-4 py-4 text-sm text-green-700 animate-fade-in">
+							✓ Your booking request has been sent successfully.
 						</div>
 					)}
 
 					<div className="space-y-5">
+						
+						{/* NAME */}
 						<div>
-							<label 
-								htmlFor="name-input"
-								className="text-sm font-medium text-[#2E2018] block"
-							>
-								Name
+							<label className="text-sm font-medium text-[#2E2018]">
+								Full Name
 							</label>
 
 							<input
-								id="name-input"
 								type="text"
 								value={name}
-								onChange={(e) => {
-									setName(e.target.value);
-									if (errors.name) {
-										setErrors({ ...errors, name: undefined });
-									}
-								}}
+								onChange={(e) => setName(e.target.value)}
 								placeholder="Your name"
-								className={`w-full mt-2 border rounded-xl px-4 py-3 outline-none transition-colors ${
-									errors.name
-										? "border-red-300 focus:border-red-500"
-										: "border-[#D8CEC6] focus:border-[#3B2A1E]"
-								}`}
-								aria-invalid={!!errors.name}
-								aria-describedby={errors.name ? "name-error" : undefined}
-								disabled={isSubmitting}
+								className="w-full mt-2 border border-[#D8CEC6] rounded-2xl px-4 py-3 outline-none focus:border-[#3B2A1E] transition"
 							/>
 
 							{errors.name && (
-								<p 
-									id="name-error"
-									className="text-red-500 text-xs mt-1"
-									role="alert"
-								>
+								<p className="text-red-500 text-xs mt-1">
 									{errors.name}
 								</p>
 							)}
 						</div>
 
+						{/* EMAIL */}
 						<div>
-							<label 
-								htmlFor="email-input"
-								className="text-sm font-medium text-[#2E2018] block"
-							>
-								Email
+							<label className="text-sm font-medium text-[#2E2018]">
+								Email Address
 							</label>
 
 							<input
-								id="email-input"
 								type="email"
 								value={email}
-								onChange={(e) => {
-									setEmail(e.target.value);
-									if (errors.email) {
-										setErrors({ ...errors, email: undefined });
-									}
-								}}
+								onChange={(e) => setEmail(e.target.value)}
 								placeholder="you@example.com"
-								className={`w-full mt-2 border rounded-xl px-4 py-3 outline-none transition-colors ${
-									errors.email
-										? "border-red-300 focus:border-red-500"
-										: "border-[#D8CEC6] focus:border-[#3B2A1E]"
-								}`}
-								aria-invalid={!!errors.email}
-								aria-describedby={errors.email ? "email-error" : undefined}
-								disabled={isSubmitting}
+								className="w-full mt-2 border border-[#D8CEC6] rounded-2xl px-4 py-3 outline-none focus:border-[#3B2A1E] transition"
 							/>
 
 							{errors.email && (
-								<p 
-									id="email-error"
-									className="text-red-500 text-xs mt-1"
-									role="alert"
-								>
+								<p className="text-red-500 text-xs mt-1">
 									{errors.email}
 								</p>
 							)}
 						</div>
 
+						{/* STYLE SELECT */}
 						<div>
-							<label 
-								htmlFor="message-input"
-								className="text-sm font-medium text-[#2E2018] block"
+							<label className="text-sm font-medium text-[#2E2018]">
+								Braid Style
+							</label>
+
+							<select
+								value={style}
+								onChange={(e) => setStyle(e.target.value)}
+								className="w-full mt-2 border border-[#D8CEC6] rounded-2xl px-4 py-3 outline-none focus:border-[#3B2A1E] transition bg-white"
 							>
-								Message
+								<option value="">
+									Select a braid style
+								</option>
+
+								{braidStyles.map((item) => (
+									<option key={item} value={item}>
+										{item}
+									</option>
+								))}
+							</select>
+
+							{errors.style && (
+								<p className="text-red-500 text-xs mt-1">
+									{errors.style}
+								</p>
+							)}
+						</div>
+
+						{/* DATE */}
+						<div>
+							<label className="text-sm font-medium text-[#2E2018]">
+								Preferred Date
+							</label>
+
+							<div className="relative mt-2">
+								<CalendarDays
+									size={18}
+									className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8A7768]"
+								/>
+
+								<input
+									type="date"
+									value={date}
+									onChange={(e) => setDate(e.target.value)}
+									className="w-full border border-[#D8CEC6] rounded-2xl pl-12 pr-4 py-3 outline-none focus:border-[#3B2A1E] transition"
+								/>
+							</div>
+
+							{errors.date && (
+								<p className="text-red-500 text-xs mt-1">
+									{errors.date}
+								</p>
+							)}
+						</div>
+
+						{/* MESSAGE */}
+						<div>
+							<label className="text-sm font-medium text-[#2E2018]">
+								Additional Details
 							</label>
 
 							<textarea
-								id="message-input"
 								value={message}
-								onChange={(e) => {
-									setMessage(e.target.value);
-									if (errors.message) {
-										setErrors({ ...errors, message: undefined });
-									}
-								}}
-								placeholder="Write your message..."
-								className={`w-full mt-2 border rounded-xl px-4 py-3 h-36 resize-none outline-none transition-colors ${
-									errors.message
-										? "border-red-300 focus:border-red-500"
-										: "border-[#D8CEC6] focus:border-[#3B2A1E]"
-								}`}
-								aria-invalid={!!errors.message}
-								aria-describedby={errors.message ? "message-error" : undefined}
-								disabled={isSubmitting}
+								onChange={(e) => setMessage(e.target.value)}
+								placeholder="Hair length, preferred size, inspiration, etc."
+								className="w-full mt-2 border border-[#D8CEC6] rounded-2xl px-4 py-3 h-32 resize-none outline-none focus:border-[#3B2A1E] transition"
 							/>
 
 							{errors.message && (
-								<p 
-									id="message-error"
-									className="text-red-500 text-xs mt-1"
-									role="alert"
-								>
+								<p className="text-red-500 text-xs mt-1">
 									{errors.message}
 								</p>
 							)}
 						</div>
 
+						{/* BUTTON */}
 						<button
 							onClick={handleSubmit}
 							disabled={isSubmitting}
-							className="w-full bg-[#3B2A1E] hover:bg-[#2A1C12] transition text-white py-3 rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed relative"
+							className="w-full bg-[#3B2A1E] hover:bg-[#2A1C12] transition text-white py-3 rounded-2xl font-medium disabled:opacity-50"
 						>
-							{isSubmitting ? (
-								<span className="flex items-center justify-center gap-2">
-									<svg 
-										className="animate-spin h-5 w-5" 
-										xmlns="http://www.w3.org/2000/svg" 
-										fill="none" 
-										viewBox="0 0 24 24"
-									>
-										<circle 
-											className="opacity-25" 
-											cx="12" 
-											cy="12" 
-											r="10" 
-											stroke="currentColor" 
-											strokeWidth="4"
-										/>
-										<path 
-											className="opacity-75" 
-											fill="currentColor" 
-											d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-										/>
-									</svg>
-									Sending...
-								</span>
-							) : (
-								"Send Message"
-							)}
+							{isSubmitting
+								? "Checking Availability..."
+								: "Check Availability"}
 						</button>
 					</div>
 				</section>
@@ -304,16 +299,6 @@ export default function ContactPage() {
 
 				.animate-fade-in {
 					animation: fade-in 0.3s ease-out;
-				}
-
-				@keyframes spin {
-					to {
-						transform: rotate(360deg);
-					}
-				}
-
-				.animate-spin {
-					animation: spin 1s linear infinite;
 				}
 			`}</style>
 		</main>

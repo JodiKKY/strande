@@ -13,7 +13,7 @@ const braids = [
   },
   {
     id: 2,
-    name: "Rasta",
+    name: "Box Braids",
     image: rastaImg,
   },
   {
