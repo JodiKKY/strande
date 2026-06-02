@@ -18,7 +18,7 @@ export default function Navbar() {
 						href="/"
 						className="text-lg sm:text-xl font-serif tracking-[0.28em] text-[#2E2018] hover:opacity-80 transition"
 					>
-						STRANDÉ
+						TWAÏN
 					</Link>
 
 					{/* Desktop Navigation */}

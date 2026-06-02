@@ -59,7 +59,7 @@ export default function AboutPage() {
 	<div className="relative z-10 max-w-3xl px-8 md:px-16 pb-20 md:pb-28">
 		
 		<p className="uppercase tracking-[0.35em] text-sm text-[#EAD8C8] mb-5">
-			About Strande
+			About Twaïn
 		</p>
 
 		<h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] text-white mb-8">
@@ -175,7 +175,7 @@ export default function AboutPage() {
 					</h2>
 
 					<p className="max-w-4xl mx-auto text-lg md:text-xl leading-relaxed text-[#5F4637]">
-						Strande blends beauty inspiration with elegant design
+						Twaïn blends beauty inspiration with elegant design
 						to create a seamless digital experience for braid
 						lovers everywhere. We are building a platform where
 						culture, beauty, and confidence exist beautifully

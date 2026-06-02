@@ -20,7 +20,7 @@ export default function Footer() {
 						{/* Brand */}
 						<div className="text-center md:text-left">
 							<h2 className="font-serif tracking-[0.35em] text-2xl md:text-3xl mb-3">
-								STRANDÉ
+								TWAÏN
 							</h2>
 
 							<p className="text-[#D8C7BA] max-w-sm leading-relaxed text-sm md:text-base">
@@ -68,7 +68,7 @@ export default function Footer() {
 					<div className="flex flex-col md:flex-row justify-between items-center gap-5 text-sm">
 						
 						<p className="text-[#D8C7BA] text-center md:text-left">
-							© {new Date().getFullYear()} STRANDÉ. All rights
+							© {new Date().getFullYear()} TWAÏN. All rights
 							reserved.
 						</p>
 
